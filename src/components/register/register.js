@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button, StyleSheet, ImageBackground } from 'react-native';
+import { View, TextInput, Text, Button, StyleSheet, ImageBackground, ActivityIndicator } from 'react-native';
 import bgImage from '../images/bg.png';
+import { withNavigation } from 'react-navigation';
 
 class Register extends Component {
 
+  goToWelcome = () => {
+    this.props.registerUser(this.props.navigation);
+    return false;
+  }
+
   render() {
-    const { name, error, success, email, password, getEmail, getPassword, getName, registerUser } = this.props;
+    const { name, error, success, email, password, getEmail, getPassword, getName, loading } = this.props;
 
     return (
       <ImageBackground style={{ flex: 1, width: null }} source={bgImage}>
@@ -17,14 +23,14 @@ class Register extends Component {
               placeholderTextColor='#fff' 
               style={styles.formInput} 
               onChangeText={getName} 
-            />
+              />
             <TextInput 
               placeholder="E-mail" 
               value={email} 
               placeholderTextColor='#fff' 
               style={styles.formInput} 
               onChangeText={getEmail} 
-            />
+              />
             <TextInput 
               placeholder="Senha" 
               secureTextEntry 
@@ -32,21 +38,24 @@ class Register extends Component {
               placeholderTextColor='#fff' 
               style={styles.formInput} 
               onChangeText={getPassword} 
-            />
+              />
           </View>
           <View style={styles.buttonContainer}>
-            {error !== '' &&
+            {error &&
               <Text style={styles.error}>{error}</Text>
             }
-            <Button title="Cadastrar" color="#115E54" onPress={registerUser} />
+            <Button title="Cadastrar" color="#115E54" onPress={this.goToWelcome} />
           </View>
         </View>
+        {loading &&
+          <ActivityIndicator style={styles.loading} size={120} color="#56be57" />
+        }
       </ImageBackground>
     );
   };
 };
 
-export default Register;
+export default withNavigation(Register);
 
 const styles = StyleSheet.create({
   container: {
@@ -72,5 +81,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 20,
     textAlign: 'center'
+  },
+  loading: {
+    position: 'absolute',
+    justifyContent: 'center',
+    top: 0, 
+    left: 0, 
+    right: 0, 
+    bottom: 0,
   }
 });

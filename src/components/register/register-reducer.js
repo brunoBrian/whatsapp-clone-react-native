@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   name: '',
-  success: '',
-  error: ''
+  error: false, 
+  loading: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,11 +9,11 @@ export default (state = INITIAL_STATE, action) => {
     case 'GET_NAME':
       return { ...state, name: action.payload };
     case 'REGISTER_USER_REQUEST':
-      return { ...state, name: action.payload };
+      return { ...state, loading: true };
     case 'REGISTER_USER_SUCCESS':
-      return { ...state, success: action.payload, error: '' };
+      return { ...state, error: false, loading: false };
     case 'REGISTER_USER_FAILED':
-      return { ...state, error: action.payload };
+      return { ...state, error: action.payload, loading: false };
     default:
       return state;
   }

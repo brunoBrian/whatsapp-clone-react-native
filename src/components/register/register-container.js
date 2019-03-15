@@ -6,8 +6,8 @@ import Register from './register';
 
 const mapStateToProps = state => ({ 
   name: state.register.name,
-  success: state.register.success,
   error: state.register.error,
+  loading: state.register.loading,
   email: state.login.email,
   password: state.login.password,
 });
