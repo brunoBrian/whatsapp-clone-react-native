@@ -5,7 +5,7 @@ import { getEmail, getPassword } from '../login/login-actions';
 import Cadastro from './cadastro';
 
 const mapStateToProps = state => ({ 
-  nome: state.cadastro.nome,
+  name: state.cadastro.name,
   email: state.login.email,
   password: state.login.password,
 });
