@@ -1,9 +1,9 @@
 import { createStackNavigator } from 'react-navigation';
 
-import Cadastro from '../components/cadastro/cadastro-container';
+import Register from '../components/register/register-container';
 import Login from '../components/login/login-container';
 
 export default createStackNavigator({
   Login,
-  Cadastro,
+  Register,
 });

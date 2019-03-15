@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import login from '../components/login/login-reducer';
-import cadastro from '../components/cadastro/cadastro-reducer';
+import register from '../components/register/register-reducer';
 
 const rootReducer = combineReducers({
   login,
-  cadastro
+  register
 });
 
 export default rootReducer;

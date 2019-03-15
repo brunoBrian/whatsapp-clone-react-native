@@ -12,7 +12,8 @@
     "react-native": "0.59.0",
     "react-navigation": "^2.18.3",
     "react-redux": "^6.0.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",

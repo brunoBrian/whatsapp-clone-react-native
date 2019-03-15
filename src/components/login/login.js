@@ -17,9 +17,22 @@ class Login extends Component {
             <Text style={styles.title}>WhatsApp Clone</Text>
           </View>
           <View style={styles.formContainer}>
-            <TextInput style={styles.formInput} value={email} placeholderTextColor='#fff' placeholder='E-mail' onChangeText={getEmail} />
-            <TextInput style={styles.formInput} secureTextEntry value={password} placeholderTextColor='#fff' placeholder='Senha' onChangeText={getPassword} />
-            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Cadastro')}>
+            <TextInput 
+              style={styles.formInput} 
+              value={email} 
+              placeholderTextColor='#fff' 
+              placeholder='E-mail' 
+              onChangeText={getEmail} 
+            />
+            <TextInput 
+              style={styles.formInput} 
+              secureTextEntry 
+              value={password} 
+              placeholderTextColor='#fff' 
+              placeholder='Senha' 
+              onChangeText={getPassword} 
+            />
+            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Register')}>
               <Text style={styles.formText}>Ainda não tem cadastro? Cadastre-se</Text>
             </TouchableOpacity>
           </View>

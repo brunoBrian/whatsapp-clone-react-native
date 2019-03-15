@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getName } from './cadastro-actions';
+import { getName, registerUser } from './register-actions';
 import { getEmail, getPassword } from '../login/login-actions';
-import Cadastro from './cadastro';
+import Register from './register';
 
 const mapStateToProps = state => ({ 
-  name: state.cadastro.name,
+  name: state.register.name,
+  success: state.register.success,
+  error: state.register.error,
   email: state.login.email,
   password: state.login.password,
 });
@@ -13,8 +15,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   getEmail,
   getPassword,
-  getName
+  getName, 
+  registerUser
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cadastro);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
 
