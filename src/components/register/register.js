@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, Button, StyleSheet, ImageBackground, ActivityIndicator } from 'react-native';
-import bgImage from '../images/bg.png';
+import bgImage from '../../images/bg.png';
 import { withNavigation } from 'react-navigation';
 
 class Register extends Component {

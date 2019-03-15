@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, ImageBackground, Image, StyleSheet } from 'react-native';
-import bgImage from '../images/bg.png';
-import logo from '../images/logo.png';
+import bgImage from '../../images/bg.png';
+import logo from '../../images/logo.png';
 
 
 class Welcome extends Component {

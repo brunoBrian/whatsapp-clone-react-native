@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
-import bgImage from '../images/bg.png';
+import bgImage from '../../images/bg.png';
 
 class Login extends Component {
   static navigationOptions = {

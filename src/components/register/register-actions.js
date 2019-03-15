@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import registerError from '../utils/registerError';
+import registerError from '../../utils/registerError';
 
 export const registerUser = navigation => {
   return (dispatch, getState) => {
