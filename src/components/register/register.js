@@ -7,7 +7,7 @@ YellowBox.ignoreWarnings(['Setting a timer']);
 
 class Register extends Component {
 
-  goToWelcome = () => {
+  registerUser = () => {
     this.props.registerUser(this.props.navigation);
     return false;
   }
@@ -46,7 +46,7 @@ class Register extends Component {
             {error &&
               <Text style={styles.error}>{error}</Text>
             }
-            <Button title="Cadastrar" color="#115E54" onPress={this.goToWelcome} />
+            <Button title="Cadastrar" color="#115E54" onPress={this.registerUser} />
           </View>
         </View>
         {loading &&

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native';
 import bgImage from '../../images/bg.png';
 
 class Login extends Component {
@@ -8,7 +8,7 @@ class Login extends Component {
   }
 
   render() {
-    const { email, password, getPassword, getEmail } = this.props;
+    const { email, password, error, loading, getPassword, getEmail, userLogin } = this.props;
 
     return (
       <ImageBackground style={{ flex: 1, width: null }} source={bgImage}>
@@ -37,9 +37,15 @@ class Login extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.buttonContainer}>
-            <Button title="Acessar" color='#115E54' onPress={() => false} />
+            {error &&
+              <Text style={styles.error}>{error}</Text>
+            }
+            <Button title="Acessar" color='#115E54' onPress={userLogin} />
           </View>
         </View>
+        {loading &&
+          <ActivityIndicator style={styles.loading} size={120} color="#56be57" />
+        }
       </ImageBackground>
     );
   }
@@ -81,4 +87,18 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
   },
+  error: {
+    color: 'red',
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: 'center'
+  },
+  loading: {
+    position: 'absolute',
+    justifyContent: 'center',
+    top: 0, 
+    left: 0, 
+    right: 0, 
+    bottom: 0,
+  }
 });

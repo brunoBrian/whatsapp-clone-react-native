@@ -1,11 +1,11 @@
 import firebase from 'firebase';
 import base64 from 'base-64';
-import registerError from '../../utils/registerError';
+import { registerError } from '../../utils/firebaseErrorHandling';
 
 export const registerUser = navigation => {
   return (dispatch, getState) => {
-    const { email, password } = getState().login;
-    const { name } = getState().register;
+    const { email } = getState().login;
+    const { name, password } = getState().register;
 
     dispatch(registerUserAction());
 
