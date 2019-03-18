@@ -1,13 +1,16 @@
 const INITIAL_STATE = {
   name: '',
   error: false, 
-  loading: false
+  loading: false,
+  password: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'GET_NAME':
       return { ...state, name: action.payload };
+    case 'REGISTER_GET_PASSWORD':
+      return { ...state, password: action.payload };
     case 'REGISTER_USER_REQUEST':
       return { ...state, loading: true };
     case 'REGISTER_USER_SUCCESS':

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button, StyleSheet, ImageBackground, ActivityIndicator } from 'react-native';
+import { View, TextInput, Text, Button, StyleSheet, ImageBackground, ActivityIndicator, YellowBox } from 'react-native';
 import bgImage from '../../images/bg.png';
 import { withNavigation } from 'react-navigation';
+
+YellowBox.ignoreWarnings(['Setting a timer']);
 
 class Register extends Component {
 
@@ -11,7 +13,7 @@ class Register extends Component {
   }
 
   render() {
-    const { name, error, success, email, password, getEmail, getPassword, getName, loading } = this.props;
+    const { name, error, email, password, getEmail, getPassword, getName, loading } = this.props;
 
     return (
       <ImageBackground style={{ flex: 1, width: null }} source={bgImage}>

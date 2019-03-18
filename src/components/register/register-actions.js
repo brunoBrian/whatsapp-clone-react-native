@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import base64 from 'base-64';
 import registerError from '../../utils/registerError';
 
 export const registerUser = navigation => {
@@ -10,8 +11,14 @@ export const registerUser = navigation => {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
-        navigation.navigate('Welcome');
-        dispatch(registerUserSuccess());
+        let emailBase64 = base64.encode(email);
+        
+        firebase.database().ref(`contatos/${emailBase64}`)
+          .push({ name })
+          .then(() => {
+            dispatch(registerUserSuccess());
+            navigation.navigate('Welcome');
+          });
       })
       .catch(error => {
         let erro = registerError(error.code);
@@ -22,6 +29,11 @@ export const registerUser = navigation => {
 
 export const getName = payload => ({
   type: 'GET_NAME',
+  payload 
+});
+
+export const getPassword = payload => ({
+  type: 'REGISTER_GET_PASSWORD',
   payload 
 });
 
