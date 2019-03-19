@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native';
+import { View, StatusBar, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native';
 import bgImage from '../../images/bg.png';
 
 class Login extends Component {
@@ -7,11 +7,17 @@ class Login extends Component {
     header: null,
   }
 
+  loginUser = () => {
+    this.props.userLogin(this.props.navigation);
+    return false;
+  }
+
   render() {
-    const { email, password, error, loading, getPassword, getEmail, userLogin } = this.props;
+    const { email, password, error, loading, getPassword, getEmail } = this.props;
 
     return (
       <ImageBackground style={{ flex: 1, width: null }} source={bgImage}>
+        <StatusBar backgroundColor='#115E54' />
         <View style={styles.container}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>WhatsApp Clone</Text>
@@ -40,7 +46,7 @@ class Login extends Component {
             {error &&
               <Text style={styles.error}>{error}</Text>
             }
-            <Button title="Acessar" color='#115E54' onPress={userLogin} />
+            <Button title="Acessar" color='#115E54' onPress={this.loginUser} />
           </View>
         </View>
         {loading &&

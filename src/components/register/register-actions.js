@@ -9,6 +9,11 @@ export const registerUser = navigation => {
 
     dispatch(registerUserAction());
 
+    if(!name) {
+      dispatch(registerUserError('O campo nome não pode ser vazio!'));
+      return false;
+    }
+
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
         let emailBase64 = base64.encode(email);

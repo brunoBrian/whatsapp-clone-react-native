@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button, StyleSheet, ImageBackground, ActivityIndicator, YellowBox } from 'react-native';
+import { StatusBar, View, TextInput, Text, Button, StyleSheet, ImageBackground, ActivityIndicator, YellowBox } from 'react-native';
 import bgImage from '../../images/bg.png';
 import { withNavigation } from 'react-navigation';
 
@@ -17,24 +17,25 @@ class Register extends Component {
 
     return (
       <ImageBackground style={{ flex: 1, width: null }} source={bgImage}>
+        <StatusBar backgroundColor='#115E54' />
         <View style={styles.container}>
           <View style={styles.formContainer}>
             <TextInput 
-              placeholder="Nome" 
+              placeholder='Nome' 
               value={name} 
               placeholderTextColor='#fff' 
               style={styles.formInput} 
               onChangeText={getName} 
               />
             <TextInput 
-              placeholder="E-mail" 
+              placeholder='E-mail' 
               value={email} 
               placeholderTextColor='#fff' 
               style={styles.formInput} 
               onChangeText={getEmail} 
               />
             <TextInput 
-              placeholder="Senha" 
+              placeholder='Senha' 
               secureTextEntry 
               value={password} 
               placeholderTextColor='#fff' 
@@ -46,11 +47,11 @@ class Register extends Component {
             {error &&
               <Text style={styles.error}>{error}</Text>
             }
-            <Button title="Cadastrar" color="#115E54" onPress={this.registerUser} />
+            <Button title='Cadastrar' color='#115E54' onPress={this.registerUser} />
           </View>
         </View>
         {loading &&
-          <ActivityIndicator style={styles.loading} size={120} color="#56be57" />
+          <ActivityIndicator style={styles.loading} size={120} color='#56be57' />
         }
       </ImageBackground>
     );

@@ -17,13 +17,9 @@ export const loginError = error => {
   switch(error) {
     case 'auth/invalid-email':
       return 'Endereço de e-mail inválido!';
-    case 'auth/wrong-password':
-      return 'Usuario ou senha inválidos!';
-    case 'auth/user-not-found':
-      return 'Usuario ou senha inválidos!';
     case 'auth/user-disabled':
       return 'Usuário desabilitado. Favor entrar em contato com o administrador';
     default:
-      return 'Erro na autenticação!';
+      return 'Usuario ou senha inválidos!';
   }
 }

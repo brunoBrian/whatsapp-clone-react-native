@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import { loginError } from '../../utils/firebaseErrorHandling';
 
-export const userLogin = () => {
+export const userLogin = navigation => {
   return (dispatch, getState) => {
     const { email, password } = getState().login;
 
@@ -13,6 +13,7 @@ export const userLogin = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
         dispatch(loginUserSuccess());
+        navigation.navigate('Main');
       })
       .catch(error => {
         let erro = loginError(error.code);
