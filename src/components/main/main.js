@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 
 import TabBarMenu from '../tabBarMenu';
@@ -20,7 +20,6 @@ class Main extends Component {
   };
 
   render() {
-    console.log(this.props.navigation);
     return (
       <TabView
         navigationState={this.state}

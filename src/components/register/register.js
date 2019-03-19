@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { withNavigation } from 'react-navigation';
 import { StatusBar, View, TextInput, Text, Button, StyleSheet, ImageBackground, ActivityIndicator, YellowBox } from 'react-native';
 import bgImage from '../../images/bg.png';
-import { withNavigation } from 'react-navigation';
+import Loading from '../loading';
+import Error from '../error';
 
 YellowBox.ignoreWarnings(['Setting a timer']);
 
@@ -45,13 +47,13 @@ class Register extends Component {
           </View>
           <View style={styles.buttonContainer}>
             {error &&
-              <Text style={styles.error}>{error}</Text>
+              <Error error={error} />
             }
             <Button title='Cadastrar' color='#115E54' onPress={this.registerUser} />
           </View>
         </View>
         {loading &&
-          <ActivityIndicator style={styles.loading} size={120} color='#56be57' />
+          <Loading />
         }
       </ImageBackground>
     );
@@ -79,18 +81,4 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
   },
-  error: {
-    color: 'red',
-    fontSize: 16,
-    marginBottom: 20,
-    textAlign: 'center'
-  },
-  loading: {
-    position: 'absolute',
-    justifyContent: 'center',
-    top: 0, 
-    left: 0, 
-    right: 0, 
-    bottom: 0,
-  }
 });

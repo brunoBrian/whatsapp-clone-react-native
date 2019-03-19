@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, StatusBar, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native';
 import bgImage from '../../images/bg.png';
+import Loading from '../loading';
+import Error from '../error';
 
 class Login extends Component {
   static navigationOptions = {
@@ -44,13 +46,13 @@ class Login extends Component {
           </View>
           <View style={styles.buttonContainer}>
             {error &&
-              <Text style={styles.error}>{error}</Text>
+              <Error error={error} />
             }
             <Button title="Acessar" color='#115E54' onPress={this.loginUser} />
           </View>
         </View>
         {loading &&
-          <ActivityIndicator style={styles.loading} size={120} color="#56be57" />
+          <Loading />
         }
       </ImageBackground>
     );
