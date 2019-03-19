@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StatusBar, View, Text, Button, ImageBackground, Image, StyleSheet } from 'react-native';
-import bgImage from '../../images/bg.png';
-import logo from '../../images/logo.png';
+import bgImage from '../images/bg.png';
+import logo from '../images/logo.png';
 
 
 class Welcome extends Component {
@@ -12,7 +12,7 @@ class Welcome extends Component {
   render() {
     return (
       <ImageBackground style={{ flex: 1, width: null }} source={bgImage}>
-        <StatusBar backgroundColor='#115E54' />
+        <StatusBar backgroundColor='#114D44' />
         <View style={styles.container}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Seja Bem-Vindo</Text>

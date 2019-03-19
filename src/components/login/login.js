@@ -17,7 +17,7 @@ class Login extends Component {
 
     return (
       <ImageBackground style={{ flex: 1, width: null }} source={bgImage}>
-        <StatusBar backgroundColor='#115E54' />
+        <StatusBar backgroundColor='#114D44' />
         <View style={styles.container}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>WhatsApp Clone</Text>

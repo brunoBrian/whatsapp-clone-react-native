@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
-import { Text, SafeAreaView, StatusBar } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
+import { TabView, SceneMap } from 'react-native-tab-view';
+
+import TabBarMenu from '../tabBarMenu';
+import Conversations from '../conversations/conversations';
+import Contacts from '../contacts/contacts';
 
 class Main extends Component {
   static navigationOptions = {
     header: null,
   }
 
+  state = {
+    index: 0,
+    routes: [
+      { key: 'conversations', title: 'Conversas' },
+      { key: 'contacts', title: 'Contatos' },
+    ],
+  };
+
   render() {
+    console.log(this.props.navigation);
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: 'blue' }}>
-        <StatusBar backgroundColor='red' />
-        {/* <Text>Bruno Sousa</Text> */}
-      </SafeAreaView>
+      <TabView
+        navigationState={this.state}
+        renderScene={SceneMap({
+          conversations: Conversations,
+          contacts: Contacts,
+        })}
+        renderTabBar={props => <TabBarMenu {...props} navigation={this.props.navigation} /> }
+        onIndexChange={index => this.setState({ index })}
+        initialLayout={{ width: Dimensions.get('window').width }}
+      />
     );
   }
 }
