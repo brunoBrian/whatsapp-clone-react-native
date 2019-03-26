@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
   email: state.addContact.email,
   error: state.addContact.error,
   loading: state.addContact.loading,
+  success: state.addContact.success,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

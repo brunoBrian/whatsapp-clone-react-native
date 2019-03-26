@@ -7,19 +7,19 @@ import Main from '../components/main/main';
 import AddContact from '../components/addContact/addContact-container';
 
 export default createStackNavigator({
-  // Login,
-  // Register: {
-  //   screen: Register,
-  //   navigationOptions: () => ({
-  //     title: `Cadastro`,
-  //     headerStyle: {
-  //       backgroundColor: '#115E54',
-  //     },
-  //     headerTintColor: '#fff',
-  //   }),
-  // },
-  // Welcome,
-  // Main,
+  Login,
+  Register: {
+    screen: Register,
+    navigationOptions: () => ({
+      title: `Cadastro`,
+      headerStyle: {
+        backgroundColor: '#115E54',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+  Welcome,
+  Main,
   AddContact: {
       screen: AddContact,
       navigationOptions: () => ({

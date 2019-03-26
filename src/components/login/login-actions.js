@@ -10,6 +10,7 @@ export const userLogin = navigation => {
 
     dispatch(loginRequest());
 
+    // Login no firebase
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
         dispatch(loginUserSuccess());
@@ -21,6 +22,13 @@ export const userLogin = navigation => {
       });
   };
 }
+
+export const loginRegisterClick = navigation => {
+  return (dispatch) => {
+    navigation.navigate('Register');
+    dispatch(loginCleanPasswordAction());
+  }
+};
 
 export const getEmail = payload => ({
   type: 'GET_EMAIL',
@@ -36,6 +44,7 @@ export const loginRequest = () => ({
   type: 'LOGIN_REQUEST',
 });
 
+
 const loginUserSuccess = payload => ({
   type: 'LOGIN_SUCCESS',
   payload 
@@ -43,5 +52,10 @@ const loginUserSuccess = payload => ({
 
 const loginUserError = payload => ({
   type: 'LOGIN_FAILED',
+  payload 
+});
+
+const loginCleanPasswordAction = payload => ({
+  type: 'LOGIN_CLEAN_PASSWORD',
   payload 
 });

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Dimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 
-import TabBarMenu from '../tabBarMenu';
+import TabBarMenu from '../tabBarMenu/tabBarMenu-container';
 import Conversations from '../conversations/conversations';
 import Contacts from '../contacts/contacts';
 

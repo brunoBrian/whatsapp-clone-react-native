@@ -14,10 +14,12 @@ export const registerUser = navigation => {
       return false;
     }
 
+    // Cria um usuario do firebase
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
         let emailBase64 = base64.encode(email);
         
+        // Adiciona no banco /contatos/hash-do-email o nome do usuario que foi registrado
         firebase.database().ref(`contatos/${emailBase64}`)
           .push({ name })
           .then(() => {

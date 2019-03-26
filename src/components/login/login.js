@@ -14,6 +14,11 @@ class Login extends Component {
     return false;
   }
 
+  cleanPasswordAndNavigateToRegister = () => {
+    this.props.loginRegisterClick(this.props.navigation);
+    return false;
+  }
+
   render() {
     const { email, password, error, loading, getPassword, getEmail } = this.props;
 
@@ -40,7 +45,7 @@ class Login extends Component {
               placeholder='Senha' 
               onChangeText={getPassword} 
             />
-            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Register')}>
+            <TouchableOpacity style={styles.button} onPress={this.cleanPasswordAndNavigateToRegister}>
               <Text style={styles.formText}>Ainda não tem cadastro? Cadastre-se</Text>
             </TouchableOpacity>
           </View>
