@@ -26,6 +26,7 @@ class Contacts extends Component {
         onPress={() => navigation.navigate('Conversations', {
           name: contacts.name
         })}
+        underlayColor='#fff'
       >
         <View style={styles.container}>
           <Text style={styles.name}>{contacts.name}</Text>
