@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ListView, StyleSheet } from 'react-native';
+import { View, Text, ListView, StyleSheet, TouchableHighlight } from 'react-native';
 
 class Contacts extends Component {
 
@@ -20,17 +20,27 @@ class Contacts extends Component {
     this.dataSource = ds.cloneWithRows(contacts);
   }
 
+  renderRow( contacts, navigation ) {
+    return (
+      <TouchableHighlight
+        onPress={() => navigation.navigate('Conversations', {
+          name: contacts.name
+        })}
+      >
+        <View style={styles.container}>
+          <Text style={styles.name}>{contacts.name}</Text>
+          <Text style={styles.email}>{contacts.email}</Text>
+        </View>
+      </TouchableHighlight>
+    )
+  }
+
   render(){
     return (
       <ListView
         enableEmptySections
         dataSource={this.dataSource}
-        renderRow={data => (
-          <View style={styles.container}>
-            <Text style={styles.name}>{data.name}</Text>
-            <Text style={styles.email}>{data.email}</Text>
-          </View>
-        )}
+        renderRow={data => this.renderRow(data, this.props.navigation)}
       />
     );
   }

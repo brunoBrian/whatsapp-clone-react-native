@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 
 import TabBarMenu from '../tabBarMenu/tabBarMenu-container';
-import Conversations from '../conversations/conversations';
+import ListConversations from '../list-conversations/list-conversations';
 import Contacts from '../contacts/contacts-container';
 
 class Main extends Component {
@@ -14,19 +14,27 @@ class Main extends Component {
   state = {
     index: 0,
     routes: [
-      { key: 'conversations', title: 'Conversas' },
+      { key: 'listConversations', title: 'Conversas' },
       { key: 'contacts', title: 'Contatos' },
     ],
+  };
+
+  _renderScene = ({ route }) => {
+    switch (route.key) {
+      case 'contacts':
+        return <Contacts navigation={this.props.navigation} />;
+      case 'listConversations':
+        return <ListConversations />;
+      default:
+        return null;
+    }
   };
 
   render() {
     return (
       <TabView
         navigationState={this.state}
-        renderScene={SceneMap({
-          conversations: Conversations,
-          contacts: Contacts,
-        })}
+        renderScene={this._renderScene}
         renderTabBar={props => <TabBarMenu {...props} navigation={this.props.navigation} /> }
         onIndexChange={index => this.setState({ index })}
         initialLayout={{ width: Dimensions.get('window').width }}
