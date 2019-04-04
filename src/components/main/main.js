@@ -4,7 +4,7 @@ import { TabView, SceneMap } from 'react-native-tab-view';
 
 import TabBarMenu from '../tabBarMenu/tabBarMenu-container';
 import Conversations from '../conversations/conversations';
-import Contacts from '../contacts/contacts';
+import Contacts from '../contacts/contacts-container';
 
 class Main extends Component {
   static navigationOptions = {
