@@ -2,9 +2,9 @@ import firebase from 'firebase';
 import base64 from 'base-64';
 import _ from 'lodash';
 
-export const sendMessage = () => {
+export const sendInputMessage = () => {
   return (dispatch, getState) => {
-    const { message } = getState().conversation;
+    const { inputMessage: message } = getState().conversation;
     
     // Dados do contato
     const { name: contactName, email: contactEmail } = getState().contacts.activeContactClicked;
@@ -19,11 +19,11 @@ export const sendMessage = () => {
 
     // cria dois endpoints de mensagens no firebase, um para o usuario e outro para o contato, com as mensagens recebidas e enviadas
     firebase.database().ref(`/mensagens/${userEmailB64}/${contactEmailB64}`)
-      .push({ message, tipo: 'e' })
+      .push({ message, type: 'send' })
 
       .then(() => {
         firebase.database().ref(`/mensagens/${contactEmailB64}/${userEmailB64}`)
-        .push({ message, tipo: 'r' })
+        .push({ message, type: 'receive' })
       })
 
       .then(() => { // Armazena o cabeçalho de conversa do usuário autenticado
@@ -39,16 +39,49 @@ export const sendMessage = () => {
             firebase.database().ref(`/usuario_conversas/${contactEmailB64}/${userEmailB64}`)
               .set({ name: userData.name, email: userEmail })
           })
-        dispatch(cleanMessage());
+        dispatch(cleanInputMessage());
       })
   };
 };
 
-export const getMessage = payload => ({
-  type: 'GET_MESSAGE',
+export const listMessages = () => {
+  return (dispatch, getState) => {
+    
+    // Recuperando e-mail do usuario autenticado
+    const { currentUser } = firebase.auth();
+
+    // Recuperando e-mail do contato clicado
+    const { email: contactEmail } = getState().contacts.activeContactClicked;
+
+
+    const userEmailB64 = base64.encode(currentUser.email);
+    const contactEmailB64 = base64.encode(contactEmail);
+
+    // Pega as mensagens e fica vendo quando existe mudanças
+    firebase.database().ref(`/mensagens/${userEmailB64}/${contactEmailB64}`)
+      .on('value', snapshot => {
+
+        // Transformando objeto para array
+        let messages = _.map(snapshot.val(), (val, uid) => {
+          return { ...val, uid }
+        });
+
+        dispatch(getMessagesConversation(messages));
+      })
+
+  };
+}
+
+export const getInputMessage = payload => ({
+  type: 'GET_INPUT_MESSAGE',
   payload 
 });
 
-const cleanMessage = () => ({
-  type: 'CLEAN_MESSAGE',
+const cleanInputMessage = () => ({
+  type: 'CLEAN_INPUT_MESSAGE',
+});
+
+const getMessagesConversation = payload => ({
+  type: 'GET_MESSAGES_CONVERSATION',
+  payload 
 });

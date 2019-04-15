@@ -1,13 +1,16 @@
 const INITIAL_STATE = {
-  message: '',
+  inputMessage: '',
+  messagesData: [],
 }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'GET_MESSAGE':
-      return { ...state, message: action.payload };
-    case 'CLEAN_MESSAGE':
-      return { ...state, message: '' };
+    case 'GET_INPUT_MESSAGE':
+      return { ...state, inputMessage: action.payload };
+    case 'CLEAN_INPUT_MESSAGE':
+      return { ...state, inputMessage: '' };
+    case 'GET_MESSAGES_CONVERSATION':
+      return { ...state, messagesData: action.payload };
     default:
       return state;
   }
