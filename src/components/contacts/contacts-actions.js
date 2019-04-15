@@ -24,3 +24,8 @@ const listContacts = payload => ({
   type: 'LIST_CONTACT',
   payload
 });
+
+export const getNameAndEmailClicked = payload => ({
+  type: 'GET_NAME_EMAIL_CLICKED',
+  payload
+});

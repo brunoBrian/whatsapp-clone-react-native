@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getListContacts } from './contacts-actions';
+import { getListContacts, getNameAndEmailClicked } from './contacts-actions';
 import Contacts from './contacts';
 
 const mapStateToProps = state => ({ 
@@ -10,8 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getListContacts
+  getListContacts,
+  getNameAndEmailClicked
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
-

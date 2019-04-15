@@ -20,12 +20,21 @@ class Contacts extends Component {
     this.dataSource = ds.cloneWithRows(contacts);
   }
 
-  renderRow( contacts, navigation ) {
+  // Função auxiliar para passar nome e email para a action
+  saveParameterContactClicked = (name, email) => {
+    this.props.getNameAndEmailClicked({ name, email });
+    return false;
+  }
+
+  getParametersContactClicked(name, email) {
+    this.saveParameterContactClicked(name, email);
+    this.props.navigation.navigate('Conversations', { name: name });
+  }
+
+  renderRow( contacts ) {
     return (
       <TouchableHighlight
-        onPress={() => navigation.navigate('Conversations', {
-          name: contacts.name
-        })}
+        onPress={() => this.getParametersContactClicked(contacts.name, contacts.email)}
         underlayColor='#fff'
       >
         <View style={styles.container}>
@@ -41,7 +50,7 @@ class Contacts extends Component {
       <ListView
         enableEmptySections
         dataSource={this.dataSource}
-        renderRow={data => this.renderRow(data, this.props.navigation)}
+        renderRow={data => this.renderRow(data)}
       />
     );
   }

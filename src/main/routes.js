@@ -5,7 +5,7 @@ import Register from '../components/register/register-container';
 import Login from '../components/login/login-container';
 import Main from '../components/main/main';
 import AddContact from '../components/addContact/addContact-container';
-import Conversations from '../components/conversations/conversations';
+import Conversations from '../components/conversations/conversations-container';
 
 export default createStackNavigator({
   Login,

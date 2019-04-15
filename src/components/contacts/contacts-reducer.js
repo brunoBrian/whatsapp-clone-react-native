@@ -1,7 +1,8 @@
 const INITIAL_STATE = {
   contactsData: [],
   error: 'true',
-  loading: false
+  loading: false,
+  activeContactClicked: []
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -14,6 +15,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, error: action.payload, loading: false };
     case 'LIST_CONTACT_REQUEST':
       return { ...state, loading: true, error: false };
+    case 'GET_NAME_EMAIL_CLICKED':
+      return { ...state, activeContactClicked: action.payload };
     default:
       return state;
   }

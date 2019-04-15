@@ -4,15 +4,21 @@ import sendMessageIcon from '../../images/send-message-icon.png';
 
 class Conversations extends Component {
   render() {
+    const { message, getMessage, sendMessage, activeContactClicked } = this.props;
+
     return (
       <View style={styles.container}>
         <View style={styles.messagesContainer}>
           <Text>Mensagem</Text>
         </View>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.input} />
+          <TextInput 
+            value={message}
+            style={styles.input} 
+            onChangeText={getMessage} 
+          />
           <TouchableHighlight
-            onPress={() => alert(9999)}
+            onPress={sendMessage}
             underlayColor='#eee4dc'
           >
             <Image source={sendMessageIcon} style={styles.image} />
