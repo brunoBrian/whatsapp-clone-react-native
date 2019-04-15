@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import base64 from 'base-64';
 import _ from 'lodash';
 
-export const getListContacts = () => {
+export const getcontactsList = () => {
   return (dispatch) => {
     const { currentUser } = firebase.auth();
     let emailUserB64 = base64.encode( currentUser.email );
@@ -15,13 +15,13 @@ export const getListContacts = () => {
           return {...val, uid}
         });
 
-        dispatch(listContacts(dadosContatosObj));
+        dispatch(contactsList(dadosContatosObj));
       })
   };
 }
 
-const listContacts = payload => ({
-  type: 'LIST_CONTACT',
+const contactsList = payload => ({
+  type: 'CONTACT_LIST',
   payload
 });
 

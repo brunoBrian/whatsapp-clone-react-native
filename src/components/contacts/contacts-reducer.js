@@ -7,13 +7,13 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'LIST_CONTACT':
+    case 'CONTACT_LIST':
       return { ...state, contactsData: action.payload };
-    case 'LIST_CONTACT_FAILED':
+    case 'CONTACT_LIST_FAILED':
       return { ...state, success: false, error: false, email: '' };
-    case 'LIST_CONTACT_SUCCESS':
+    case 'CONTACT_LIST_SUCCESS':
       return { ...state, error: action.payload, loading: false };
-    case 'LIST_CONTACT_REQUEST':
+    case 'CONTACT_LIST_REQUEST':
       return { ...state, loading: true, error: false };
     case 'GET_NAME_EMAIL_CLICKED':
       return { ...state, activeContactClicked: action.payload };

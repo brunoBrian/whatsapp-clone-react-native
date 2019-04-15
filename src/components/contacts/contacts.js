@@ -4,7 +4,7 @@ import { View, Text, ListView, StyleSheet, TouchableHighlight } from 'react-nati
 class Contacts extends Component {
 
   componentWillMount() {
-    this.props.getListContacts();
+    this.props.getcontactsList();
     this.createDataSource( this.props.contactsData );
   }
 

@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 
 import TabBarMenu from '../tabBarMenu/tabBarMenu-container';
-import ListConversations from '../list-conversations/list-conversations';
+import ListConversations from '../list-conversations/list-conversations-container';
 import Contacts from '../contacts/contacts-container';
 
 class Main extends Component {
@@ -24,7 +24,7 @@ class Main extends Component {
       case 'contacts':
         return <Contacts navigation={this.props.navigation} />;
       case 'listConversations':
-        return <ListConversations />;
+        return <ListConversations navigation={this.props.navigation} />;
       default:
         return null;
     }
