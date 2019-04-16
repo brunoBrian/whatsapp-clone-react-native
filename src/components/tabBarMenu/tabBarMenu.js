@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StatusBar, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { TabBar} from 'react-native-tab-view';
 import addContactImage from '../../images/add-contact.png';
+import Logout from '../../utils/logout';
 
 class TabBarMenu extends React.Component {
   hideSuccessMessage = () => {
@@ -25,7 +26,9 @@ class TabBarMenu extends React.Component {
               </TouchableOpacity>
             </View>
             <View>
-              <Text style={styles.logout}>Sair</Text>
+              <TouchableOpacity onPress={() => Logout(this.props.navigation)}>
+                <Text style={styles.logout}>Sair</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
